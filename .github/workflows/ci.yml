@@ -3,20 +3,19 @@ on:
   push:
     branches:
       - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout project
-          uses: actions/checkout@v4
-
-        - name: Set up Java
-          uses: actions/setup-java@v4
-          with:
-            java-version: '21'
-            distribution: 'temurin'
-        - name: build with maven
-          run: mvn clean package -DskipTests
-        - name: Build Docker image
-          run: docker build -t spring-app .
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: build with maven
+        run: mvn clean package -DskipTests
+      - name: Build Docker image
+        run: docker build -t spring-app .
