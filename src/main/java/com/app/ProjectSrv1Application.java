@@ -17,6 +17,4 @@ public class ProjectSrv1Application {
         SpringApplication.run(ProjectSrv1Application.class, args);
     }
 
-
-    THIS_WILL_BREAK;
 }
